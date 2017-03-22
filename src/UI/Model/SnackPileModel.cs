@@ -12,7 +12,7 @@ namespace UI.Model
             _snackPile = snackPile;
         }
 
-        public int Amount => _snackPile.Quantity;
+        public string Amount => $"{_snackPile.Quantity} left.";
         public string ImageSource => $@"{AppDomain.CurrentDomain.BaseDirectory}\Images\{_snackPile.Snack.Name}.jpg";
         public int ImageWidth => GetImageWidth(_snackPile.Snack);
         public string Name => _snackPile.Snack.Name;

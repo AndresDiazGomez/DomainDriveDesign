@@ -56,6 +56,12 @@
             this.picture_Chocolate = new System.Windows.Forms.PictureBox();
             this.picture_Soda = new System.Windows.Forms.PictureBox();
             this.picture_Gum = new System.Windows.Forms.PictureBox();
+            this.price_Chocolate = new System.Windows.Forms.Label();
+            this.price_Soda = new System.Windows.Forms.Label();
+            this.price_Gum = new System.Windows.Forms.Label();
+            this.quantity_Gum = new System.Windows.Forms.Label();
+            this.quantity_Soda = new System.Windows.Forms.Label();
+            this.quantity_Chocolate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picture_Chocolate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_Soda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_Gum)).BeginInit();
@@ -334,11 +340,71 @@
             this.picture_Gum.TabIndex = 26;
             this.picture_Gum.TabStop = false;
             // 
+            // price_Chocolate
+            // 
+            this.price_Chocolate.AutoSize = true;
+            this.price_Chocolate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
+            this.price_Chocolate.Location = new System.Drawing.Point(192, 41);
+            this.price_Chocolate.Name = "price_Chocolate";
+            this.price_Chocolate.Size = new System.Drawing.Size(0, 32);
+            this.price_Chocolate.TabIndex = 27;
+            // 
+            // price_Soda
+            // 
+            this.price_Soda.AutoSize = true;
+            this.price_Soda.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
+            this.price_Soda.Location = new System.Drawing.Point(192, 165);
+            this.price_Soda.Name = "price_Soda";
+            this.price_Soda.Size = new System.Drawing.Size(0, 32);
+            this.price_Soda.TabIndex = 28;
+            // 
+            // price_Gum
+            // 
+            this.price_Gum.AutoSize = true;
+            this.price_Gum.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
+            this.price_Gum.Location = new System.Drawing.Point(192, 287);
+            this.price_Gum.Name = "price_Gum";
+            this.price_Gum.Size = new System.Drawing.Size(0, 32);
+            this.price_Gum.TabIndex = 29;
+            // 
+            // quantity_Gum
+            // 
+            this.quantity_Gum.AutoSize = true;
+            this.quantity_Gum.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
+            this.quantity_Gum.Location = new System.Drawing.Point(192, 350);
+            this.quantity_Gum.Name = "quantity_Gum";
+            this.quantity_Gum.Size = new System.Drawing.Size(0, 32);
+            this.quantity_Gum.TabIndex = 32;
+            // 
+            // quantity_Soda
+            // 
+            this.quantity_Soda.AutoSize = true;
+            this.quantity_Soda.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
+            this.quantity_Soda.Location = new System.Drawing.Point(192, 228);
+            this.quantity_Soda.Name = "quantity_Soda";
+            this.quantity_Soda.Size = new System.Drawing.Size(0, 32);
+            this.quantity_Soda.TabIndex = 31;
+            // 
+            // quantity_Chocolate
+            // 
+            this.quantity_Chocolate.AutoSize = true;
+            this.quantity_Chocolate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
+            this.quantity_Chocolate.Location = new System.Drawing.Point(192, 104);
+            this.quantity_Chocolate.Name = "quantity_Chocolate";
+            this.quantity_Chocolate.Size = new System.Drawing.Size(0, 32);
+            this.quantity_Chocolate.TabIndex = 30;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 600);
+            this.Controls.Add(this.quantity_Gum);
+            this.Controls.Add(this.quantity_Soda);
+            this.Controls.Add(this.quantity_Chocolate);
+            this.Controls.Add(this.price_Gum);
+            this.Controls.Add(this.price_Soda);
+            this.Controls.Add(this.price_Chocolate);
             this.Controls.Add(this.picture_Gum);
             this.Controls.Add(this.picture_Soda);
             this.Controls.Add(this.picture_Chocolate);
@@ -369,6 +435,7 @@
             this.Controls.Add(this.BuySnackButtonOne);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture_Chocolate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_Soda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_Gum)).EndInit();
@@ -407,6 +474,12 @@
         private System.Windows.Forms.PictureBox picture_Chocolate;
         private System.Windows.Forms.PictureBox picture_Soda;
         private System.Windows.Forms.PictureBox picture_Gum;
+        private System.Windows.Forms.Label price_Chocolate;
+        private System.Windows.Forms.Label price_Soda;
+        private System.Windows.Forms.Label price_Gum;
+        private System.Windows.Forms.Label quantity_Gum;
+        private System.Windows.Forms.Label quantity_Soda;
+        private System.Windows.Forms.Label quantity_Chocolate;
     }
 }
 

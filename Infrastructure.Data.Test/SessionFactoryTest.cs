@@ -1,8 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Configuration;
-using NHibernate;
-using Domain;
+using static Domain.Money;
 
 namespace Infrastructure.Data.Test
 {
@@ -10,15 +8,17 @@ namespace Infrastructure.Data.Test
     public class SessionFactoryTest
     {
         [TestMethod]
-        public void InitTest()
+        public void Test()
         {
             SessionFactory.Init(ConfigurationManager.ConnectionStrings["DDDInPractice"].ConnectionString);
 
-            using (ISession session = SessionFactory.OpenSession())
-            {
-                long id = 1;
-                var snackMachine = session.Get<SnackMachine>(id);
-            }
+            var repository = new SnackMachineRepository();
+            var snackMachine = repository.GetById(1);
+            snackMachine.InsertMoney(Dollar);
+            snackMachine.InsertMoney(Dollar);
+            snackMachine.InsertMoney(Dollar);
+            snackMachine.BuySnack(1);
+            repository.Save(snackMachine);
         }
     }
 }

@@ -20,21 +20,33 @@ namespace UI
             _snackMachineRepository = new SnackMachineRepository();
             _snackMachine = _snackMachineRepository.GetById(1);
             NotifyClient(string.Empty);
-            SetSnackPiles(_snackMachine
-                .GetAllSnackPiles()
-                .Select(item => new SnackPileModel(item))
-                .ToList());
+            SetSnackPiles();
         }
 
-        private void SetSnackPiles(ICollection<SnackPileModel> piles)
+        private void SetSnackPiles()
         {
+            ICollection<SnackPileModel> piles = _snackMachine
+                .GetAllSnackPiles()
+                .Select(item => new SnackPileModel(item))
+                .ToList();
             foreach (var pile in piles)
             {
                 var picture = Controls.Find($"picture_{pile.Name}", true).FirstOrDefault() as PictureBox;
                 if (picture != null)
                 {
                     picture.ImageLocation = pile.ImageSource;
-                    picture.Width = pile.ImageWidth;
+                }
+
+                var quantity = Controls.Find($"quantity_{pile.Name}", true).FirstOrDefault() as Label;
+                if (quantity != null)
+                {
+                    quantity.Text = pile.Amount;
+                }
+
+                var price = Controls.Find($"price_{pile.Name}", true).FirstOrDefault() as Label;
+                if (price != null)
+                {
+                    price.Text = pile.Price;
                 }
             }
         }
@@ -44,8 +56,16 @@ namespace UI
 
         private void BuySnack(int position)
         {
+            var error = _snackMachine.CanBuySnack(position);
+            if(error != string.Empty)
+            {
+                MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             _snackMachine.BuySnack(position);
             _snackMachineRepository.Save(_snackMachine);
+            SetSnackPiles();
             NotifyClient("You have bought a snack");
         }
 
@@ -117,6 +137,11 @@ namespace UI
         private void TwentyDollarButton_Click(object sender, EventArgs e)
         {
             InsertMoney(Money.TwentyDollar);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

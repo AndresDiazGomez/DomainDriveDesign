@@ -9,9 +9,9 @@ namespace Domain
         public static readonly Snack Gum = new Snack(2, "Gum");
         public static readonly Snack Soda = new Snack(3, "Soda");
 
-        public string Name { get; protected set; }
+        public virtual string Name { get; protected set; }
 
-        private Snack()
+        protected Snack()
         {
         }
 

@@ -4,11 +4,11 @@ namespace Domain
 {
     public class Slot : Entity
     {
-        public int Position { get; protected set; }
+        public virtual int Position { get; protected set; }
 
-        public SnackPile SnackPile { get; set; }
+        public virtual SnackPile SnackPile { get; set; }
 
-        public SnackMachine SnackMachine { get; protected set; }
+        public virtual SnackMachine SnackMachine { get; protected set; }
 
         public Slot()
         {
