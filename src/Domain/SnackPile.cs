@@ -11,7 +11,7 @@ namespace Domain
         public int Quantity { get; private set; }
         public Snack Snack { get; private set; }
 
-        public SnackPile()
+        private SnackPile()
         {
         }
 

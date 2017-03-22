@@ -4,8 +4,8 @@ namespace Domain.Repository
 {
     public interface IRepository<T> where T : AggregateRoot
     {
-        T GetById(Guid id);
+        T GetById(long id);
 
-        void Save();
+        void Save(T aggregateRoot);
     }
 }

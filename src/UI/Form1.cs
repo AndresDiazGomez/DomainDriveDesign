@@ -16,10 +16,9 @@ namespace UI
 
         public Form1()
         {
-            _snackMachineRepository = new SnackMachineRepository();
-            _snackMachine = _snackMachineRepository.GetById(SnackMachine.Default.Id);
-            //_snackMachine = SnackMachine.Default;
             InitializeComponent();
+            _snackMachineRepository = new SnackMachineRepository();
+            _snackMachine = _snackMachineRepository.GetById(1);
             NotifyClient(string.Empty);
             SetSnackPiles(_snackMachine
                 .GetAllSnackPiles()
@@ -32,8 +31,11 @@ namespace UI
             foreach (var pile in piles)
             {
                 var picture = Controls.Find($"picture_{pile.Name}", true).FirstOrDefault() as PictureBox;
-                picture.ImageLocation = pile.ImageSource;
-                picture.Width = pile.ImageWidth;
+                if (picture != null)
+                {
+                    picture.ImageLocation = pile.ImageSource;
+                    picture.Width = pile.ImageWidth;
+                }
             }
         }
 
@@ -43,7 +45,7 @@ namespace UI
         private void BuySnack(int position)
         {
             _snackMachine.BuySnack(position);
-            _snackMachineRepository.Save();
+            _snackMachineRepository.Save(_snackMachine);
             NotifyClient("You have bought a snack");
         }
 

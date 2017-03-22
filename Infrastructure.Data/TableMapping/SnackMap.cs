@@ -1,14 +1,14 @@
 ﻿using Domain;
-using System.Data.Entity.ModelConfiguration;
+using FluentNHibernate.Mapping;
 
 namespace Infrastructure.Data.TableMapping
 {
-    public class SnackMap : EntityTypeConfiguration<Snack>
+    public class SnackMap : ClassMap<Snack>
     {
         public SnackMap()
         {
-            HasKey(key => key.Id);
-            Property(prop => prop.Name);
+            Id(x => x.Id);
+            Map(x => x.Name);
         }
     }
 }

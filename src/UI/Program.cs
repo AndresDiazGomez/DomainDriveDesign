@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Infrastructure.Data;
+using System;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace UI
@@ -13,6 +15,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            SessionFactory.Init(ConfigurationManager.ConnectionStrings["DDDInPractice"].ConnectionString);
             Application.Run(new Form1());
         }
     }

@@ -1,17 +1,23 @@
 ﻿using Domain;
-using System.Data.Entity.ModelConfiguration;
+using FluentNHibernate.Mapping;
 
 namespace Infrastructure.Data.TableMapping
 {
-    public class SlotMap : EntityTypeConfiguration<Slot>
+    public class SlotMap : ClassMap<Slot>
     {
         public SlotMap()
         {
-            HasKey(key => key.Id);
-            Property(prop => prop.Position);
+            Id(x => x.Id);
+            Map(x => x.Position);
 
-            HasRequired(item => item.SnackMachine);
-            //HasRequired(item => item.SnackPile.Snack);
+            Component(x=> x.SnackPile, y =>
+            {
+                y.Map(x => x.Quantity);
+                y.Map(x => x.Price);
+                y.References(x => x.Snack).Not.LazyLoad();
+            });
+
+            References(x => x.SnackMachine);
         }
     }
 }

@@ -1,31 +1,29 @@
 ﻿using Domain;
 using Domain.Repository;
+using NHibernate;
 using System;
-using System.Data.Entity;
-using System.Linq;
 
 namespace Infrastructure.Data
 {
     public abstract class Repository<T> : IRepository<T>
         where T : AggregateRoot
     {
-        DDDInPracticeContext _context;
-        DbSet<T> _entity;
-
-        public Repository()
+        public T GetById(long id)
         {
-            _context = new DDDInPracticeContext();
-            _entity = _context.Set<T>();
+            using (ISession session = SessionFactory.OpenSession())
+            {
+                return session.Get<T>(id);
+            }
         }
 
-        public T GetById(Guid id)
+        public void Save(T aggregateRoot)
         {
-            return _entity.FirstOrDefault(entity => entity.Id == id);
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
+            using (ISession session = SessionFactory.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                session.SaveOrUpdate(aggregateRoot);
+                transaction.Commit();
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Domain
 {
     public abstract class Entity
     {
-        public Guid Id { get; protected set; }
+        public virtual long Id { get; protected set; }
 
         public override bool Equals(object obj)
         {
@@ -16,10 +16,11 @@ namespace Domain
             if (ReferenceEquals(this, other))
                 return true;
 
+            //Get real type for this two objects with hibernate
             if (GetType() != other.GetType())
                 return false;
 
-            if (Id == Guid.Empty || other.Id == Guid.Empty)
+            if (Id == 0 || other.Id == 0)
                 return false;
 
             return Id == other.Id;
