@@ -51,6 +51,8 @@ namespace Domain.Atms
 
             decimal amountWithComission = CalculateWithComission(amount);
             MoneyCharged += amountWithComission;
+
+            AddDomainEvent(new BalanceChangedEvent(amountWithComission));
         }
 
         public virtual decimal CalculateWithComission(decimal amount)

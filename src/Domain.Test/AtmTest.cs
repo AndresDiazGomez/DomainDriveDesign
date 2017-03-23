@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Domain.Atms;
 using static Domain.SharedKernel.Money;
+using Domain.Common;
 
 namespace Domain.Test
 {
@@ -41,6 +42,19 @@ namespace Domain.Test
             atm.TakeMoney(DollarAndCent.Amount);
 
             Assert.AreEqual(atm.MoneyCharged, 1.12m);
+        }
+
+        [TestMethod]
+        public void Take_money_raise_an_event()
+        {
+            var atm = new Atm();
+            atm.LoadMoney(Dollar);
+
+            atm.TakeMoney(1m);
+
+            var balanceChangedEvent = atm.DomainEvents[0] as BalanceChangedEvent;
+            Assert.IsNotNull(balanceChangedEvent);
+            Assert.AreEqual(balanceChangedEvent.Delta, 1.01m);
         }
     }
 }

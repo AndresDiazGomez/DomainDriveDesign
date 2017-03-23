@@ -1,10 +1,6 @@
 ﻿using Domain.Common;
 using Domain.SharedKernel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static Domain.SharedKernel.Money;
 
 namespace Domain.Management
 {
@@ -12,5 +8,15 @@ namespace Domain.Management
     {
         public virtual decimal Balance { get; protected set; }
         public virtual Money Cash { get; protected set; }
+
+        public HeadOffice()
+        {
+            Cash = None;
+        }
+
+        public virtual void ChangeBalance(decimal delta)
+        {
+            Balance += delta;
+        }
     }
 }

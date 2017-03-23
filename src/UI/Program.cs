@@ -2,6 +2,7 @@
 using System;
 using System.Configuration;
 using System.Windows.Forms;
+using UI.Utils;
 
 namespace UI
 {
@@ -15,7 +16,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SessionFactory.Init(ConfigurationManager.ConnectionStrings["DDDInPractice"].ConnectionString);
+            Initer.Init();
             Application.Run(new AtmForm());
         }
     }
