@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Configuration;
-using static Domain.Money;
+using static Domain.SharedKernel.Money;
 
 namespace Infrastructure.Data.Test
 {

@@ -1,7 +1,8 @@
-﻿using System;
-using static Domain.Snack;
+﻿using Domain.Common;
+using System;
+using static Domain.SnackMachine.Snack;
 
-namespace Domain
+namespace Domain.SnackMachine
 {
     public class SnackPile : ValueObject<SnackPile>
     {

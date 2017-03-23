@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Domain.SnackMachine;
 using System;
 
 namespace UI.Model

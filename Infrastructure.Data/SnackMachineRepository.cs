@@ -1,10 +1,8 @@
-﻿using Domain;
-using Domain.Repository;
+﻿using Domain.Repository;
+using Domain.SharedKernel;
+using Domain.SnackMachine;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Data
 {

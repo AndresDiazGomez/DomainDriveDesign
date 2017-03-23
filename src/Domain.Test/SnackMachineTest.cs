@@ -1,7 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using static Domain.Money;
-using static Domain.Snack;
+using Domain.SnackMachine;
+using static Domain.SharedKernel.Money;
+using static Domain.SnackMachine.Snack;
 
 namespace Domain.Test
 {
@@ -11,7 +12,7 @@ namespace Domain.Test
         [TestMethod]
         public void Return_money_empties_money_in_transaction()
         {
-            var snackMachine = new SnackMachine();
+            var snackMachine = new SnackMachine.SnackMachine();
 
             snackMachine.InsertMoney(Dollar);
             snackMachine.ReturnMoney();
@@ -22,7 +23,7 @@ namespace Domain.Test
         [TestMethod]
         public void Inserted_money_goes_to_money_in_transaction()
         {
-            var snackMachine = new SnackMachine();
+            var snackMachine = new SnackMachine.SnackMachine();
 
             snackMachine.InsertMoney(Cent);
             snackMachine.InsertMoney(Dollar);
@@ -34,7 +35,7 @@ namespace Domain.Test
         [ExpectedException(typeof(InvalidOperationException))]
         public void Cannot_insert_more_than_one_coin_or_note_at_a_time()
         {
-            var snackMachine = new SnackMachine();
+            var snackMachine = new SnackMachine.SnackMachine();
             var twoCents = Cent + Cent;
 
             snackMachine.InsertMoney(twoCents);
@@ -43,7 +44,7 @@ namespace Domain.Test
         [TestMethod]
         public void BuySnack_trades_inserted_money_for_a_snack()
         {
-            var snackMachine = new SnackMachine();
+            var snackMachine = new SnackMachine.SnackMachine();
             snackMachine.LoadSnack(1, new SnackPile(Chocolate, 10, 1m));
             snackMachine.InsertMoney(Dollar);
 
@@ -58,7 +59,7 @@ namespace Domain.Test
         [ExpectedException(typeof(InvalidOperationException))]
         public void Cannot_make_purchase_when_there_is_no_snacks()
         {
-            var snackMachine = new SnackMachine();
+            var snackMachine = new SnackMachine.SnackMachine();
             snackMachine.BuySnack(1);
         }
 
@@ -66,7 +67,7 @@ namespace Domain.Test
         [ExpectedException(typeof(InvalidOperationException))]
         public void Cannot_make_purchase_if_not_enough_money_inserted()
         {
-            var snackMachine = new SnackMachine();
+            var snackMachine = new SnackMachine.SnackMachine();
             snackMachine.LoadSnack(1, new SnackPile(Chocolate, 1, 2m));
             snackMachine.InsertMoney(Dollar);
             snackMachine.BuySnack(1);
@@ -75,7 +76,7 @@ namespace Domain.Test
         [TestMethod]
         public void Snack_machine_returns_money_with_highest_denomination_first()
         {
-            var snackMachine = new SnackMachine();
+            var snackMachine = new SnackMachine.SnackMachine();
             snackMachine.LoadMoney(Dollar);
             snackMachine.InsertMoney(Quarter);
             snackMachine.InsertMoney(Quarter);
@@ -91,7 +92,7 @@ namespace Domain.Test
         [TestMethod]
         public void After_purchase_change_is_returned()
         {
-            var snackMachine = new SnackMachine();
+            var snackMachine = new SnackMachine.SnackMachine();
             snackMachine.LoadSnack(1, new SnackPile(Chocolate, 1, 0.5m));
             snackMachine.LoadMoney(TenCent * 10);
 
@@ -106,7 +107,7 @@ namespace Domain.Test
         [ExpectedException(typeof(InvalidOperationException))]
         public void Cannot_buy_a_snack_if_not_enough_change()
         {
-            var snackMachine = new SnackMachine();
+            var snackMachine = new SnackMachine.SnackMachine();
             snackMachine.LoadSnack(1, new SnackPile(Chocolate, 1, 0.5m));
             snackMachine.InsertMoney(Dollar);
 

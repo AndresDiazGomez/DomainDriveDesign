@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.SnackMachine;
 using FluentNHibernate.Mapping;
 
 namespace Infrastructure.Data.TableMapping

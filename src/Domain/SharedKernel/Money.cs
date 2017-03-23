@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Domain.Common;
+using System;
 
-namespace Domain
+namespace Domain.SharedKernel
 {
     public class Money : ValueObject<Money>
     {
@@ -122,10 +123,10 @@ namespace Domain
                 oneDollarCount, fiveDollarsCount, twentyDollarsCount);
         }
 
-        public bool CanAllocate(decimal ammount)
+        public bool CanAllocate(decimal amount)
         {
-            Money money = AllocateCore(ammount);
-            return money.Amount == ammount;
+            Money money = AllocateCore(amount);
+            return money.Amount == amount;
         }
 
         public override string ToString()

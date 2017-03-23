@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Domain.Common;
+using Domain.SharedKernel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain
+namespace Domain.SnackMachine
 {
     public class SnackMachine : AggregateRoot
     {
@@ -47,11 +49,11 @@ namespace Domain
             {
                 return "The snack pile is empty.";
             }
-            if(MoneyInTransaction < snackPile.Price)
+            if (MoneyInTransaction < snackPile.Price)
             {
                 return "Not enough money.";
             }
-            if(!MoneyInside.CanAllocate(MoneyInTransaction - snackPile.Price))
+            if (!MoneyInside.CanAllocate(MoneyInTransaction - snackPile.Price))
             {
                 return "Not enough change.";
             }
@@ -60,7 +62,7 @@ namespace Domain
 
         public virtual void BuySnack(int position)
         {
-            if(CanBuySnack(position) != string.Empty)
+            if (CanBuySnack(position) != string.Empty)
             {
                 throw new InvalidOperationException();
             }

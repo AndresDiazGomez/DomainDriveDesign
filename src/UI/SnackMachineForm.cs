@@ -1,20 +1,21 @@
-﻿using Domain;
-using Domain.Repository;
+﻿using Domain.Repository;
 using Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using UI.Model;
 using System.Linq;
+using Domain.SharedKernel;
+using Domain.SnackMachine;
 
 namespace UI
 {
-    public partial class Form1 : Form
+    public partial class SnackMachineForm : Form
     {
         private readonly SnackMachine _snackMachine;
         private readonly ISnackMachineRepository _snackMachineRepository;
 
-        public Form1()
+        public SnackMachineForm()
         {
             InitializeComponent();
             _snackMachineRepository = new SnackMachineRepository();

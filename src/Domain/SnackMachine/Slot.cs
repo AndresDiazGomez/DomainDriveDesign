@@ -1,6 +1,7 @@
-﻿using static Domain.SnackPile;
+﻿using Domain.Common;
+using static Domain.SnackMachine.SnackPile;
 
-namespace Domain
+namespace Domain.SnackMachine
 {
     public class Slot : Entity
     {

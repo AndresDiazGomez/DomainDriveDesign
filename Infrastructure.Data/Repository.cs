@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Domain.Common;
 using Domain.Repository;
 using NHibernate;
 using System;

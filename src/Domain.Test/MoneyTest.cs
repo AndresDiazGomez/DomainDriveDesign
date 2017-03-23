@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Domain.SharedKernel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Domain.Test
@@ -55,7 +56,7 @@ namespace Domain.Test
         }
 
         [TestMethod]
-        public void Ammount_is_calculate_correctly()
+        public void Amount_is_calculate_correctly()
         {
             var money = new Money(0, 0, 0, 0, 0, 0);
             Assert.AreEqual(money.Amount, 0);
@@ -104,7 +105,7 @@ namespace Domain.Test
         }
 
         [TestMethod]
-        public void ToString_should_return_ammount_of_money()
+        public void ToString_should_return_amount_of_money()
         {
             var money1 = new Money(1, 0, 0, 0, 0, 0);
             Assert.AreEqual(money1.ToString(), "¢1");

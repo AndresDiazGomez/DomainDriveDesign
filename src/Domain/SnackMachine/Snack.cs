@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Domain.Common;
 
-namespace Domain
+namespace Domain.SnackMachine
 {
     public class Snack : AggregateRoot
     {

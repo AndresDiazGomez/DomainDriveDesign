@@ -16,7 +16,7 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             SessionFactory.Init(ConfigurationManager.ConnectionStrings["DDDInPractice"].ConnectionString);
-            Application.Run(new Form1());
+            Application.Run(new AtmForm());
         }
     }
 }
